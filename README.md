@@ -73,8 +73,8 @@ Index, New and Create has been completed for you.
 1. use and configure `body-parser` in your `app.js` (note, this package was once separate, but has been added back in to express [more details](https://expressjs.com/en/4x/api.html#express.urlencoded)
 1. check to make sure it works by changing the `res.send` from a string to sending the `req.body` - it should send the data you inputted to your `new` form
 1. parse your req.body data (in the create route):
-  1. change the input of your checkbox to be true/false rather than `on`
-  1. now when you check your `res.send(req.body)` you should see true/false rather than 'on/off' - the rest of your data should stay the same
+  - change the input of your checkbox to be true/false rather than `on`
+  - now when you check your `res.send(req.body)` you should see true/false rather than 'on/off' - the rest of your data should stay the same
 1. don't forget to `git add` and `git commit` your work, give yourself an informative commit message so you can trace back your work, if you need to
 
 ### Mongo
