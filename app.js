@@ -15,6 +15,11 @@ app.set('view engine', 'ejs')
 // app.use(methodOverride('_method'))
 // app.use(express.urlencoded({extended: false}))
 // body-parser middleware - creates a req.body{}
+app.use((req,res,next)=>{
+    console.log('after body parser')
+    console.log(req.body)
+    next()
+})
 
 // routing - logs
 
@@ -25,7 +30,19 @@ app.get('/logs/new',(req,res) =>res.render('new.ejs'))
 app.get('/logs/', (req,res)=> res.send('logs index'))
 
 // create route POST
-app.post('/logs/', (req,res) => res.send('create logs'))
+app.post('/logs/', (req,res) => {
+    console.log(req.body)
+    if(req.body.shipIsBroken === "on"){
+        req.body.shipIsBroken = true
+    }else {
+        req.body.shipIsBroken = false
+    }
+
+    logs.push(req.body)
+
+    res.send(req.body)
+})
+
 
 app.get('/',(req,res)=>{
     console.log('hitting home route')
