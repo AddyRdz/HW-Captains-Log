@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Logs</title>
+</head>
+<body>
+    <h1>New Logs</h1>
+    <form method="POST" action="/logs/">
+        <p>Title:</p>
+        <input type="Title" placeholder="Give the log a title"/>
+        <p>Entry:</p>
+        <input type="Entry" placeholder="Give the log an entry "/>
+        <p>Ship is broken:</p>
+        <legend><input name="shipIsBroken" type="checkbox"/></legend>
+        <input type="submit" value="Create Log"/>
+    </form>
+</body>
+</html>
