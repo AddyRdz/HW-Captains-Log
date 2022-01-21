@@ -1,23 +1,26 @@
 // import statements
 const express = require('express')
-const methodOverride = require('method-override')
 const app = express()
+// const methodOverride = require('method-override')
+
 
 // Mongo Database config
 const mongoose = require('mongoose')
-const URI = "mongodb://127.0.0.1:27017/"
-
-// mongoose connection
-mongoose.connect(URI,()=>console.log('mongoose connected at '+URI))
-
+const mongoURI = "mongodb://127.0.0.1:27017/"
 const logs = require('./models/logs')
+// mongoose connection
+mongoose.connect(mongoURI,()=> {
+    console.log('mongoose connected to MongoDB')
+})
+
+
 
 // configure app
 const PORT = 3000
 app.set('view engine', 'ejs')
 
 // middleware
-app.use(methodOverride('_method'))
+// app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended:false}))
 
 // body-parser middleware - creates a req.body{}
@@ -39,8 +42,9 @@ app.get('/logs/new',(req,res) =>{
 
 // index route
 app.get('/logs/', (req,res)=> {
-    Log.find({}, (err,foundLogs)=>{
-        res.render('index.ejs'), {
+    logs.find({}, (err,foundLogs)=>{
+        console.log(foundLogs)
+        res.render('index.ejs', {
             logs:foundLogs
         })
     })
@@ -48,7 +52,7 @@ app.get('/logs/', (req,res)=> {
 })
 
 // create route POST
-app.post('/logs/', (req,res) => {
+app.post('/logs/new', (req,res) => {
     console.log(req.body)
     if(req.body.shipIsBroken === "on"){
        req.body.shipIsBroken = true
@@ -56,9 +60,9 @@ app.post('/logs/', (req,res) => {
        req.body.shipIsBroken = false
    }
 
-    res.send(req.body)
+    logs.create(req.body)
    // logs.push(req.body)
-   res.redirect('/logs/')
+    res.redirect('/logs/')
 })
 
 
