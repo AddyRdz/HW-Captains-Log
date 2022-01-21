@@ -65,6 +65,19 @@ app.post('/logs/new', (req,res) => {
     res.redirect('/logs/')
 })
 
+// Show Route
+app.get('/logs/:id',(req,res)=>{
+    console.log([req.params.id])
+    const id=req.params.id
+    // res.send(logs[req.params.id])
+    logs.findById(id,(err,foundLogs)=>{
+        res.render('show.ejs',{logs:foundLogs})
+    })
+    //     log:logs[req.params.id]
+    // })
+})
+
+// Delete Route
 
 
 // Server
