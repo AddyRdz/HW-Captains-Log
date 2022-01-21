@@ -9,12 +9,11 @@
 <body>
     <h1>Captain's Log Edit Page</h1>
     <form action="/logs/<%=logs._id%>?_method=PUT" method="POST">
-        <!--input for fullName-->
         <p>foundLogs Id<%= id %></p>
-        <input name="text" value="<%=log.title%>"
+        <input name="title" value="<%=log.title%>"
         placeholder="log entry">
-        <!--input for our submit-->
         <input type="submit" value="Edit log">
     </form>
+    <a href='/logs/edit'>Captain's Log Edit!</a>
 </body>
 </html>

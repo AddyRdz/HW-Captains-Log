@@ -88,18 +88,27 @@ app.delete('/logs/:id', (req,res)=>{
 })
 
 // Edit Route
-// app.get('/:id/edit', (req,res)=>{
-//     logs.findById(req.params.id, (err,foundLogs)=>{
-//     if(err) {
-//         return res.send(err)
-//     } else{
-//         console.log(foundLogs)
-//         res.render('/logs/edit',
-//         {logs: foundLogs, id: req.params.id})
-//     }
-// })
+app.get('/logs/:id/edit', (req,res)=>{
+    logs.findById(req.params.id, (err,foundLogs)=>{
+        res.render('edit.ejs', {
+            logs: foundLogs
+        
+        })
+    })
 
-// })
+})
+
+// Put Route
+app.put('/:id',(req,res)=> {
+    logs.findByIdAndUpdate(req.params.id, req.body, {new:true},(err, updatedlogs) =>{
+        if(err){
+            return res.send(err)
+        }
+        console.log(updatedlogs)
+        res.redirect('/logs/'+req.params.id)
+    })
+    // res.send(req.body)
+})
 
 
 // Server
