@@ -15,10 +15,13 @@
                     <a href="/logs/<%=logs[i]._id%>">
                     <%= logs[i].title%>
                 </a>
+                <form method="POST" action="/logs/<%=logs._id%>?_method=DELETE">
+                    <input type="submit" value="delete <%= logs[i].title%>">
+                </form>
             </li>
             <%}%>
         </ul>
     </div>
-    <a href="/logs/new">Back to Captain's Log Index</a>
+    <a href="/logs/new">New Log Entry!</a>
 </body>
 </html>

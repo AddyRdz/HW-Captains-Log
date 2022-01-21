@@ -78,6 +78,14 @@ app.get('/logs/:id',(req,res)=>{
 })
 
 // Delete Route
+app.delete('/logs/:id', (req,res)=>{
+    const deletelogs = (err,deleteMsg) => {
+        console.log(deleteMsg)
+        res.redirect('/logs/')
+    }
+
+    logs.findByIdAndDelete(req.params.id, deletelogs)
+})
 
 
 // Server
