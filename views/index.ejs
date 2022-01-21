@@ -15,7 +15,7 @@
                     <a href="/logs/<%=logs[i]._id%>">
                     <%= logs[i].title%>
                 </a>
-                <form method="POST" action="/logs/<%=logs._id%>?_method=DELETE">
+                <form method="POST" action="/logs/<%=logs[i]._id%>?_method=DELETE">
                     <input type="submit" value="delete <%= logs[i].title%>">
                 </form>
             </li>
@@ -23,5 +23,6 @@
         </ul>
     </div>
     <a href="/logs/new">New Log Entry!</a>
+    <a href='/logs/edit'>Captain's Log Edit!</a>
 </body>
 </html>

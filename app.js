@@ -1,7 +1,7 @@
 // import statements
 const express = require('express')
 const app = express()
-// const methodOverride = require('method-override')
+const methodOverride = require('method-override')
 
 
 // Mongo Database config
@@ -20,7 +20,7 @@ const PORT = 3000
 app.set('view engine', 'ejs')
 
 // middleware
-// app.use(methodOverride('_method'))
+app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended:false}))
 
 // body-parser middleware - creates a req.body{}
@@ -86,6 +86,20 @@ app.delete('/logs/:id', (req,res)=>{
 
     logs.findByIdAndDelete(req.params.id, deletelogs)
 })
+
+// Edit Route
+// app.get('/:id/edit', (req,res)=>{
+//     logs.findById(req.params.id, (err,foundLogs)=>{
+//     if(err) {
+//         return res.send(err)
+//     } else{
+//         console.log(foundLogs)
+//         res.render('/logs/edit',
+//         {logs: foundLogs, id: req.params.id})
+//     }
+// })
+
+// })
 
 
 // Server
