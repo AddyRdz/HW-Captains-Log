@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Captain's Log Edit Page</h1>
-    <form action="/logs" method="PUT">
+    <form action="/logs/<%=logs._id %>" method="PUT">
         <p>foundLogs Id<%=logs._id %></p>
         <input name="title" value="<%=logs.title%>"
         placeholder="log entry">

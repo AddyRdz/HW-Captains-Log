@@ -77,16 +77,6 @@ app.get('/logs/:id',(req,res)=>{
     // })
 })
 
-// Delete Route
-app.delete('/logs/:id', (req,res)=>{
-    const deletelogs = (err,deleteMsg) => {
-        console.log(deleteMsg)
-        res.redirect('/logs/')
-    }
-
-    logs.findByIdAndDelete(req.params.id, deletelogs)
-})
-
 // Edit Route
 app.get('/logs/:id/edit', (req,res)=>{
     logs.findById(req.params.id, (err,foundLogs)=>{
@@ -98,12 +88,25 @@ app.get('/logs/:id/edit', (req,res)=>{
 
 })
 
+
+// Delete Route
+app.delete('/logs/:id', (req,res)=>{
+    const deletelogs = (err,deleteMsg) => {
+        console.log(deleteMsg)
+        res.redirect('/logs/')
+    }
+
+    logs.findByIdAndDelete(req.params.id, deletelogs)
+})
+
+
 // Put Route
-app.put('/:id',(req,res)=> {
-    logs.findByIdAndUpdate(req.params.id, req.body, {new:true},(err, updatedlogs) =>{
+app.put('/logs/:id',(req,res)=> {
+    logs.findByIdAndUpdate(req.params.id, req.body, {new: true},(err, updatedLogs) => {
         if(err){
             return res.send(err)
         }
+        // console.log(req.body)
         console.log(updatedlogs)
         res.redirect('/logs')
     })
