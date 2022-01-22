@@ -24,10 +24,10 @@ app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended:false}))
 
 // body-parser middleware - creates a req.body{}
-app.use((req,res,next)=>{
-    console.log(req.body)
-    next()
-})
+// app.use((req,res,next)=>{
+//     console.log(req.body)
+//     next()
+// })
 app.get('/',(req,res)=>{
     console.log('hitting home route')
     res.send('home route')
@@ -43,7 +43,7 @@ app.get('/logs/new',(req,res) =>{
 // index route
 app.get('/logs/', (req,res)=> {
     logs.find({}, (err,foundLogs)=>{
-        console.log(foundLogs)
+        // console.log(foundLogs)
         res.render('index.ejs', {
             logs:foundLogs
         })
@@ -91,7 +91,7 @@ app.delete('/logs/:id', (req,res)=>{
 app.get('/logs/:id/edit', (req,res)=>{
     logs.findById(req.params.id, (err,foundLogs)=>{
         res.render('edit.ejs', {
-            logs: foundLogs
+            logs: foundLogs, id:req.params.id
         
         })
     })
@@ -105,9 +105,9 @@ app.put('/:id',(req,res)=> {
             return res.send(err)
         }
         console.log(updatedlogs)
-        res.redirect('/logs/'+req.params.id)
+        res.redirect('/logs')
     })
-    // res.send(req.body)
+    // res.json(req.body)
 })
 
 

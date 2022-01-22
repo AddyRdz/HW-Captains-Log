@@ -8,12 +8,12 @@
 </head>
 <body>
     <h1>Captain's Log Edit Page</h1>
-    <form action="/logs/<%=logs._id%>?_method=PUT" method="POST">
-        <p>foundLogs Id<%= id %></p>
-        <input name="title" value="<%=log.title%>"
+    <form action="/logs" method="PUT">
+        <p>foundLogs Id<%=logs._id %></p>
+        <input name="title" value="<%=logs.title%>"
         placeholder="log entry">
         <input type="submit" value="Edit log">
     </form>
-    <a href='/logs/edit'>Captain's Log Edit!</a>
+    <!-- <a href='/logs/edit'>Captain's Log Edit!</a> -->
 </body>
 </html>
